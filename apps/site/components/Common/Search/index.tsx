@@ -1,61 +1,88 @@
 'use client';
 
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import classNames from 'classnames';
-import { useTranslations } from 'next-intl';
-import { useState, type FC } from 'react';
+import { OramaSearchBox, OramaSearchButton } from '@orama/react-components';
+import { useTranslations, useLocale } from 'next-intl';
+import { useTheme } from 'next-themes';
+import { type FC } from 'react';
 
-import { WithSearchBox } from '@/components/Common/Search/States/WithSearchBox';
-import { useDetectOS } from '@/hooks';
-import { useKeyboardCommands } from '@/hooks/react-client';
+import {
+  ORAMA_CLOUD_ENDPOINT,
+  ORAMA_CLOUD_API_KEY,
+  DEFAULT_ORAMA_QUERY_PARAMS,
+  DEFAULT_ORAMA_SUGGESTIONS,
+  BASE_URL,
+} from '@/next.constants.mjs';
 
-import styles from './index.module.css';
+import { themeConfig } from './utils';
 
-export const SearchButton: FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const uppercaseFirst = (word: string) =>
+  word.charAt(0).toUpperCase() + word.slice(1);
+
+const getFormattedPath = (path: string, title: string) =>
+  `${path
+    .replace(/#.+$/, '')
+    .split('/')
+    .map(element => element.replaceAll('-', ' '))
+    .map(element => uppercaseFirst(element))
+    .filter(Boolean)
+    .join(' > ')} — ${title}`;
+
+const SearchButton: FC = () => {
+  const { resolvedTheme } = useTheme();
   const t = useTranslations();
-  const openSearchBox = () => setIsOpen(true);
-  const closeSearchBox = () => setIsOpen(false);
+  const locale = useLocale();
+  const colorScheme = resolvedTheme as 'light' | 'dark';
 
-  useKeyboardCommands(cmd => {
-    switch (cmd) {
-      case 'cmd-k':
-        openSearchBox();
-        break;
-      case 'escape':
-        closeSearchBox();
-        break;
-      default:
-    }
-  });
+  const sourceMap = {
+    title: 'pageSectionTitle',
+    description: 'formattedPath',
+    path: 'path',
+  };
 
-  const { os } = useDetectOS();
-
-  const osCommandKey = os === 'MAC' ? '⌘' : 'Ctrl';
-  const isOSLoading = os === 'LOADING';
+  const resultMap = {
+    ...sourceMap,
+    description: ({
+      path,
+      pageSectionTitle,
+    }: {
+      path: string;
+      pageSectionTitle: string;
+    }) => {
+      return getFormattedPath(path, pageSectionTitle);
+    },
+    section: 'siteSection',
+  };
 
   return (
     <>
-      <button
-        type="button"
-        onClick={openSearchBox}
-        className={styles.searchButton}
+      <OramaSearchButton
+        style={{ flexGrow: 1 }}
+        colorScheme={colorScheme}
+        themeConfig={themeConfig}
         aria-label={t('components.search.searchBox.placeholder')}
       >
-        <MagnifyingGlassIcon className={styles.magnifyingGlassIcon} />
-
         {t('components.search.searchBox.placeholder')}
-        <kbd
-          title={`${osCommandKey} K`}
-          className={classNames(styles.shortcutIndicator, {
-            'opacity-0': isOSLoading,
-          })}
-        >
-          <abbr>{osCommandKey} K</abbr>
-        </kbd>
-      </button>
+      </OramaSearchButton>
 
-      {isOpen ? <WithSearchBox onClose={closeSearchBox} /> : null}
+      <OramaSearchBox
+        index={{ api_key: ORAMA_CLOUD_API_KEY, endpoint: ORAMA_CLOUD_ENDPOINT }}
+        colorScheme={colorScheme}
+        themeConfig={themeConfig}
+        sourceBaseUrl={new URL(locale, BASE_URL).href}
+        sourcesMap={sourceMap}
+        resultMap={resultMap}
+        facetProperty="siteSection"
+        linksTarget="_self"
+        highlightTitle={{
+          caseSensitive: false,
+          HTMLTag: 'b',
+          CSSClass: 'font-bold',
+        }}
+        searchParams={DEFAULT_ORAMA_QUERY_PARAMS}
+        suggestions={DEFAULT_ORAMA_SUGGESTIONS}
+      />
     </>
   );
 };
+
+export default SearchButton;
