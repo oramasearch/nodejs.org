@@ -72,7 +72,7 @@ const NodejsIcon: FC<NodeJsLogoProps> = ({
         />
 
         {variant === 'pride' ? (
-          <g clip-path="url(#clip0_1_1661)">
+          <g clipPath="url(#clip0_1_1661)">
             <mask
               id="mask1_1_1661"
               style={{ maskType: 'alpha' }}
