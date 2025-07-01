@@ -181,9 +181,9 @@ const NodejsIcon: FC<NodeJsLogoProps> = ({
             width="66.5679"
             height="73.6624"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -216,9 +216,9 @@ const NodejsIcon: FC<NodeJsLogoProps> = ({
             width="66.4241"
             height="73.7482"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -252,11 +252,11 @@ const NodejsIcon: FC<NodeJsLogoProps> = ({
             y2="73.2718"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#3F873F" />
-            <stop offset="0.33" stop-color="#3F8B3D" />
-            <stop offset="0.637" stop-color="#3E9638" />
-            <stop offset="0.934" stop-color="#3DA92E" />
-            <stop offset="1" stop-color="#3DAE2B" />
+            <stop stopColor="#3F873F" />
+            <stop offset="0.33" stopColor="#3F8B3D" />
+            <stop offset="0.637" stopColor="#3E9638" />
+            <stop offset="0.934" stopColor="#3DA92E" />
+            <stop offset="1" stopColor="#3DAE2B" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_1_1661"
@@ -266,11 +266,11 @@ const NodejsIcon: FC<NodeJsLogoProps> = ({
             y2="73.2718"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#3F873F" />
-            <stop offset="0.33" stop-color="#3F8B3D" />
-            <stop offset="0.637" stop-color="#3E9638" />
-            <stop offset="0.934" stop-color="#3DA92E" />
-            <stop offset="1" stop-color="#3DAE2B" />
+            <stop stopColor="#3F873F" />
+            <stop offset="0.33" stopColor="#3F8B3D" />
+            <stop offset="0.637" stopColor="#3E9638" />
+            <stop offset="0.934" stopColor="#3DA92E" />
+            <stop offset="1" stopColor="#3DAE2B" />
           </linearGradient>
           <linearGradient
             id="paint2_linear_1_1661"
@@ -280,11 +280,11 @@ const NodejsIcon: FC<NodeJsLogoProps> = ({
             y2="73.2718"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#3F873F" />
-            <stop offset="0.33" stop-color="#3F8B3D" />
-            <stop offset="0.637" stop-color="#3E9638" />
-            <stop offset="0.934" stop-color="#3DA92E" />
-            <stop offset="1" stop-color="#3DAE2B" />
+            <stop stopColor="#3F873F" />
+            <stop offset="0.33" stopColor="#3F8B3D" />
+            <stop offset="0.637" stopColor="#3E9638" />
+            <stop offset="0.934" stopColor="#3DA92E" />
+            <stop offset="1" stopColor="#3DAE2B" />
           </linearGradient>
           <linearGradient
             id="paint3_linear_1_1661"
@@ -294,10 +294,10 @@ const NodejsIcon: FC<NodeJsLogoProps> = ({
             y2="19.6297"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0.138" stop-color="#3F873F" />
-            <stop offset="0.402" stop-color="#52A044" />
-            <stop offset="0.713" stop-color="#64B749" />
-            <stop offset="0.908" stop-color="#6ABF4B" />
+            <stop offset="0.138" stopColor="#3F873F" />
+            <stop offset="0.402" stopColor="#52A044" />
+            <stop offset="0.713" stopColor="#64B749" />
+            <stop offset="0.908" stopColor="#6ABF4B" />
           </linearGradient>
           <linearGradient
             id="paint4_linear_1_1661"
@@ -307,10 +307,10 @@ const NodejsIcon: FC<NodeJsLogoProps> = ({
             y2="53.5048"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0.092" stop-color="#6ABF4B" />
-            <stop offset="0.287" stop-color="#64B749" />
-            <stop offset="0.598" stop-color="#52A044" />
-            <stop offset="0.862" stop-color="#3F873F" />
+            <stop offset="0.092" stopColor="#6ABF4B" />
+            <stop offset="0.287" stopColor="#64B749" />
+            <stop offset="0.598" stopColor="#52A044" />
+            <stop offset="0.862" stopColor="#3F873F" />
           </linearGradient>
           <clipPath id="clip0_1_1661">
             <rect
